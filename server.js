@@ -4,6 +4,8 @@ const db=require('./db.js');
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());
 const Person=require('./models/person.js');
+require('dotenv').config();
+
 // app.get('/',(req,res)=>{
 //     res.send('Hello World!');
 // });
@@ -40,6 +42,7 @@ app.get('/person',async(req,res)=>{
 const personRoutes=require('./routes/personRoutes.js');
 app.use('/person',personRoutes);
 
-app.listen(3000,()=>{
+const PORT=pocess.env.PORT || 3000;
+app.listen(PORT,()=>{
     console.log('Server is running on port 3000');
 });
