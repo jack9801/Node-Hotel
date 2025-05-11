@@ -1,0 +1,45 @@
+const express=require('express');
+const app=express();
+const db=require('./db.js');
+const bodyParser=require('body-parser');
+app.use(bodyParser.json());
+const Person=require('./models/person.js');
+// app.get('/',(req,res)=>{
+//     res.send('Hello World!');
+// });
+app.get('/about',(req,res)=>{
+    var about={
+        name :'shishupal',
+        age : 22,
+        city : 'pune'
+
+    }
+    res.send(about);
+});
+// app.post('/person',async(req,res)=>{
+//     try{
+//         const person=new Person(req.body);
+//         const response=await person.save();
+//         console.log('Person saved');
+//         res.status(200).json(response);
+//     }catch(err){
+//         console.log(err);
+//         res.status(500).json({err,message:'Error saving person'});
+//     }
+// });
+// GET method to retrieve all persons
+app.get('/person',async(req,res)=>{
+    try{
+        const persons=await Person.find();
+        res.status(200).json(persons);
+    }catch(err){
+        console.log(err);
+        res.status(500).json({err,message:'Error retrieving persons'});
+    }       
+});
+const personRoutes=require('./routes/personRoutes.js');
+app.use('/person',personRoutes);
+
+app.listen(3000,()=>{
+    console.log('Server is running on port 3000');
+});
