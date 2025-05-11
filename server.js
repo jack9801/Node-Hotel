@@ -6,9 +6,9 @@ app.use(bodyParser.json());
 const Person=require('./models/person.js');
 require('dotenv').config();
 
-// app.get('/',(req,res)=>{
-//     res.send('Hello World!');
-// });
+app.get('/',(req,res)=>{
+    res.send('Welcome to the server');
+});
 app.get('/about',(req,res)=>{
     var about={
         name :'shishupal',
