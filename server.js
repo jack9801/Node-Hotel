@@ -4,9 +4,11 @@ const db=require('./db.js');
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());
 const Person=require('./models/person.js');
+const passport=require('./auth.js');
 require('dotenv').config();
-
-app.get('/',(req,res)=>{
+app.use(passport.initialize());
+const LocalAuthmiddleware=passport.authenticate('local',{session:false});
+app.get('/',LocalAuthmiddleware,(req,res)=>{
     res.send('Welcome to the server');
 });
 app.get('/about',(req,res)=>{
