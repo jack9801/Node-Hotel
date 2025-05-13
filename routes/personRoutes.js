@@ -5,6 +5,7 @@ const {jwtAuthMiddleware, generateToken}=require('./jwt.js');
 router.post('/signup',async(req,res)=>{
     try{
         const data=req.body;
+        console.log('Signup request data:', req.body); // Log incoming data
         const person=new Person(data);
         const response=await person.save();
         console.log('Person saved');

@@ -5,6 +5,8 @@ const bodyParser=require('body-parser');
 const personRoutes=require('./routes/personRoutes.js');
 app.use(bodyParser.json());
 const passport=require('./auth.js');
+const cors = require('cors');
+app.use(cors());
 
 require('dotenv').config();
 
