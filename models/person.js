@@ -19,7 +19,6 @@ personSchema.pre('save', async function(next) {
     }
     try
 {
-        // Hash the password before saving it to the database
         const salt = await bcrypt.genSalt(10);
         person.password = await bcrypt.hash(person.password, salt);
         next();
@@ -36,7 +35,7 @@ personSchema.methods.comparePassword = async function(candidatePassword) {
         return isMatch;
     }
     catch (error) {
-        throw new Error('Error comparing passwords');
+        throw error;
     }
 
 };
