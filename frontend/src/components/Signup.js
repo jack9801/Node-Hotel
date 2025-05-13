@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Signup.css'; // Import the CSS file for styling
 
 function Signup() {
     const [formData, setFormData] = useState({
@@ -35,23 +36,25 @@ function Signup() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Signup</h2>
-            <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-            <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-            <input type="number" name="age" placeholder="Age" onChange={handleChange} required />
-            <select name="work" onChange={handleChange} required>
-                <option value="">Select Work</option>
-                <option value="developer">Developer</option>
-                <option value="manager">Manager</option>
-                <option value="analyst">Analyst</option>
-            </select>
-            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-            <input type="text" name="address" placeholder="Address" onChange={handleChange} required />
-            <input type="number" name="salary" placeholder="Salary" onChange={handleChange} required />
-            <button type="submit">Signup</button>
-        </form>
+        <div className="signup-container">
+            <h2 className="signup-title">Signup</h2>
+            <form className="signup-form" onSubmit={handleSubmit}>
+                <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
+                <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+                <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+                <input type="number" name="age" placeholder="Age" onChange={handleChange} required />
+                <select name="work" onChange={handleChange} required>
+                    <option value="">Select Work</option>
+                    <option value="developer">Developer</option>
+                    <option value="manager">Manager</option>
+                    <option value="analyst">Analyst</option>
+                </select>
+                <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+                <input type="text" name="address" placeholder="Address" onChange={handleChange} required />
+                <input type="number" name="salary" placeholder="Salary" onChange={handleChange} required />
+                <button type="submit">Signup</button>
+            </form>
+        </div>
     );
 }
 

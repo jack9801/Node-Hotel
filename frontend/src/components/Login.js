@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'; // Import the CSS file for styling
 
 function Login() {
     const [formData, setFormData] = useState({ username: '', password: '' });
-    const navigate = useNavigate(); // Hook to navigate between routes
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,18 +19,20 @@ function Login() {
             alert('Login successful!');
             navigate('/profile'); // Redirect to the profile page
         } catch (err) {
-            console.error(err);
+            console.error('Error during login:', err);
             alert('Login failed!');
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Login</h2>
-            <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-container">
+            <h2 className="login-title">Login</h2>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
+                <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+                <button type="submit">Login</button>
+            </form>
+        </div>
     );
 }
 
